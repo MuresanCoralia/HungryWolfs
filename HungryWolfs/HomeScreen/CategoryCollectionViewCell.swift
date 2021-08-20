@@ -7,8 +7,7 @@
 
 import UIKit
 
-class CategoryCollectionViewCell: UICollectionViewCell
-{
+class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryFoodLabel: UILabel!
     @IBOutlet weak var underView: UIView!
     

@@ -7,8 +7,7 @@
 
 import UIKit
 
-class HomeScreenViewController: UIViewController
-{
+class HomeScreenViewController: UIViewController {
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var categoriesCollection: UICollectionView!

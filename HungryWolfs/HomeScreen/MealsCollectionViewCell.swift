@@ -8,8 +8,7 @@
 import UIKit
 import Kingfisher
 
-class MealsCollectionViewCell: UICollectionViewCell
-{
+class MealsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameMealLabel: UILabel!
     @IBOutlet weak var mealImage: UIImageView!
     @IBOutlet weak var view: UIView!
