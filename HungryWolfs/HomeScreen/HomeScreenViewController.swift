@@ -14,6 +14,10 @@ class HomeScreenViewController: UIViewController
     @IBOutlet weak var categoriesCollection: UICollectionView!
     @IBOutlet weak var mealsCollection: UICollectionView!
     
+    
+    
+    @IBOutlet weak var searchField: UITextField!
+    
     private let viewModelFood: FoodViewModel = FoodViewModel()
     private let viewModelMeal: MealsViewModel = MealsViewModel()
     
@@ -37,17 +41,19 @@ class HomeScreenViewController: UIViewController
             })
         })
         
+        
         // afiseaza numai cate un produs din categorie
         (mealsCollection.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize = .zero
         
-        // linia de la tab bar si navigation controler
-        
-       // tabBar.clipsToBounds = true
-        
+        // linia de la navigation controler dispare
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        
+        // linia de la tab bar
+        UITabBar.appearance().clipsToBounds = true
+        
     }
     
     // adauga colturi rotunde la search
@@ -55,7 +61,38 @@ class HomeScreenViewController: UIViewController
     {
         searchView.layer.cornerRadius = 30
     }
-
+    
+    
+    @IBAction func toSearch(_ sender: Any)
+    {
+        performSegue(withIdentifier: "fromMainToSearch", sender: self)
+    }
+    
+    
+    // pentru detail screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        if segue.identifier == "fromMainToSearch",
+            let destination = segue.destination as? SearchViewController
+        {
+            destination.text = searchField.text ?? ""
+        }
+        
+        if segue.identifier == "fromMealToDetails",
+           let destination = segue.destination as? DetailViewController,
+           let mealId = sender as? String
+        {
+            destination.id = mealId
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
 }
 
 
@@ -79,9 +116,12 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if collectionView == categoriesCollection
         {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell
+            else{
+                return UICollectionViewCell()
+            }
             
-            cell.categoryFoodLabel.text = viewModelFood.category[indexPath.row].strCategory
+            cell.categoryFoodLabel.text = viewModelFood.category[indexPath.row].name
             
             //  colturi rotunde linia de sub categorii
             cell.configure()
@@ -103,11 +143,14 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         else
         {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealsCollectionViewCell", for: indexPath) as! MealsCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealsCollectionViewCell", for: indexPath) as? MealsCollectionViewCell
+            else{
+                return UICollectionViewCell()
+            }
             
             let meal = viewModelMeal.meals[indexPath.row]
         
-            cell.configure(thumbnailUrl: meal.strMealThumb, title: meal.strMeal)
+            cell.configure(thumbnailUrl: meal.thumb, title: meal.name)
             
             
             return cell
@@ -122,8 +165,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if collectionView == categoriesCollection
         {
-            let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell
-            let mealCategory = viewModelFood.category[indexPath.row].strCategory
+            let mealCategory = viewModelFood.category[indexPath.row].name
             
             self.viewModelMeal.getMeals(categories: mealCategory, completion: { [weak self] in self?.mealsCollection.reloadData()
             })
@@ -132,11 +174,25 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             
             //categoriesCollection.reloadItems(at: [indexPath])
             categoriesCollection.reloadData()
-        } else
-        {
             
+         // ramura else pentru detail screen
+        } else if collectionView == mealsCollection
+        {
+            let id = viewModelMeal.meals[indexPath.row].id
+            performSegue(withIdentifier: "fromMealToDetails", sender: id)
         }
     }
     
+}
+
+
+extension HomeScreenViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        // User finished typing (hit return): hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
