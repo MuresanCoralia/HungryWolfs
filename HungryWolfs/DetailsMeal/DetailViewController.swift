@@ -33,9 +33,12 @@ class DetailViewController: UIViewController
     
     var id = ""
     
-    private let viewModelDetails: DetailsViewModel = DetailsViewModel()
-    private let viewModelMeal: MealsViewModel = MealsViewModel()
+    var favId = ""
+    var favName = ""
+    var favImg = ""
     
+    private let viewModelDetails: DetailsViewModel = DetailsViewModel()
+   
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -50,13 +53,19 @@ class DetailViewController: UIViewController
         
     
         viewModelDetails.getDetails(id: id, completion: { [weak self] in
+            
+            // pentru favourites
+            self?.favName = self?.viewModelDetails.details[0].name ?? ""
+            self?.favImg = self?.viewModelDetails.details[0].thumb ?? ""
+            self?.favId = self?.viewModelDetails.details[0].id ?? ""
+
+            // pentru details
             self?.mealNameLabel.text = self?.viewModelDetails.details[0].name
-           
+                        
             guard let imageURL = URL(string: (self?.viewModelDetails.details[0].thumb)!) else { return }
             self?.mealImage.kf.setImage(with: imageURL)
             self?.mealImage.layer.masksToBounds = true
             self?.mealImage.layer.cornerRadius = (self?.mealImage.bounds.width)! / 2
-
             
             self?.measure1Label.text = self?.viewModelDetails.details[0].measure1
             self?.measure2Label.text = self?.viewModelDetails.details[0].measure2
@@ -71,44 +80,50 @@ class DetailViewController: UIViewController
             if tagList?.count == 1
             {
                 self?.mealTag1Label.text = tagList?[0]
-                self?.tagView1.layer.cornerRadius = 15
-                self?.tagView1.clipsToBounds = true
-                self?.tagView1.layer.borderWidth = 1
-                self?.tagView1.layer.borderColor = UIColor.red.cgColor
+                self?.configureView1()
             }
             else if tagList?.count == 2
             {
                 self?.mealTag1Label.text = tagList?[0]
-                self?.tagView1.layer.cornerRadius = 15
-                self?.tagView1.clipsToBounds = true
-                self?.tagView1.layer.borderWidth = 1
-                self?.tagView1.layer.borderColor = UIColor.red.cgColor
+                self?.configureView1()
                 self?.mealTag2Label.text = tagList?[1]
-                self?.tagView2.layer.cornerRadius = 15
-                self?.tagView2.clipsToBounds = true
-                self?.tagView2.layer.borderWidth = 1
-                self?.tagView2.layer.borderColor = UIColor.red.cgColor
+                self?.configureView2()
             }
             else if tagList?.count == 3
             {
                 self?.mealTag1Label.text = tagList?[0]
-                self?.tagView1.layer.cornerRadius = 15
-                self?.tagView1.clipsToBounds = true
-                self?.tagView1.layer.borderWidth = 1
-                self?.tagView1.layer.borderColor = UIColor.red.cgColor
+                self?.configureView1()
                 self?.mealTag2Label.text = tagList?[1]
-                self?.tagView2.layer.cornerRadius = 15
-                self?.tagView2.clipsToBounds = true
-                self?.tagView2.layer.borderWidth = 1
-                self?.tagView2.layer.borderColor = UIColor.red.cgColor
+                self?.configureView2()
                 self?.mealTag3Label.text = tagList?[2]
-                self?.tagView3.layer.cornerRadius = 15
-                self?.tagView3.clipsToBounds = true
-                self?.tagView3.layer.borderWidth = 1
-                self?.tagView3.layer.borderColor = UIColor.red.cgColor
+                self?.configureView3()
             }
         })
 
+    }
+    
+    func configureView1()
+    {
+        self.tagView1.layer.cornerRadius = 15
+        self.tagView1.clipsToBounds = true
+        self.tagView1.layer.borderWidth = 1
+        self.tagView1.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func configureView2()
+    {
+        self.tagView2.layer.cornerRadius = 15
+        self.tagView2.clipsToBounds = true
+        self.tagView2.layer.borderWidth = 1
+        self.tagView2.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func configureView3()
+    {
+        self.tagView3.layer.cornerRadius = 15
+        self.tagView3.clipsToBounds = true
+        self.tagView3.layer.borderWidth = 1
+        self.tagView3.layer.borderColor = UIColor.red.cgColor
     }
     
     
@@ -123,34 +138,23 @@ class DetailViewController: UIViewController
       sender.isSelected.toggle()
     }
     
-    
-    // buton preferate
-    @IBAction func favouriteButton(_ sender: Any)
+    // buton preferate 
+    @IBAction func favouriteButton(_ sender: UIButton)
     {
+        let meal = Meal(name: favName, thumb: favImg, id: favId)
         
+        sender.isSelected.toggle()
         if favouriteButton.isSelected{
-            
-            
+            if favourite.contains(meal){
+                favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: [.selected])
+            }
+            else{
+                favourite.append(meal)
+                favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: [.selected])
+            }
         }
-        else{
-            
-        }
-        
-        
-        
-        /*
-        // de luat datele
-        if let id:String? = viewModelMeal.meals[0].id,
-           let name:String? = viewModelMeal.meals[0].name,
-           let thumb:String? = viewModelMeal.meals[0].thumb
-        {
-            
-        }
-        */
-
-        
     }
-    
  
 }
+
 

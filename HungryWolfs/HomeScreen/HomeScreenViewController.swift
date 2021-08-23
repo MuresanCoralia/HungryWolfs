@@ -40,7 +40,6 @@ class HomeScreenViewController: UIViewController {
             })
         })
         
-        
         // afiseaza numai cate un produs din categorie
         (mealsCollection.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize = .zero
         
@@ -52,7 +51,12 @@ class HomeScreenViewController: UIViewController {
         
         // linia de la tab bar
         UITabBar.appearance().clipsToBounds = true
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     // adauga colturi rotunde la search
@@ -61,17 +65,14 @@ class HomeScreenViewController: UIViewController {
         searchView.layer.cornerRadius = 30
     }
     
-    
     @IBAction func toSearch(_ sender: Any)
     {
         performSegue(withIdentifier: "fromMainToSearch", sender: self)
     }
     
-    
     // pentru detail screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
         if segue.identifier == "fromMainToSearch",
             let destination = segue.destination as? SearchViewController
         {
@@ -85,13 +86,6 @@ class HomeScreenViewController: UIViewController {
             destination.id = mealId
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
 }
 
 
@@ -104,9 +98,12 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         {
             return viewModelFood.category.count
         }
-        else
+        else if collectionView == mealsCollection
         {
             return viewModelMeal.meals.count
+        }
+        else {
+            return 0
         }
     }
     
@@ -121,10 +118,8 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             }
             
             cell.categoryFoodLabel.text = viewModelFood.category[indexPath.row].name
-            
             //  colturi rotunde linia de sub categorii
             cell.configure()
-            
             // coloreaza categoria selectata
             if indexPath == selectedIndexPath
             {
@@ -137,7 +132,6 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
                 cell.categoryFoodLabel.textColor = .gray
                 cell.underView.isHidden = true
             }
-            
             return cell
         }
         else
@@ -146,31 +140,21 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             else{
                 return UICollectionViewCell()
             }
-            
             let meal = viewModelMeal.meals[indexPath.row]
-        
             cell.configure(thumbnailUrl: meal.thumb, title: meal.name)
-            
-            
             return cell
         }
-    
-        
     }
     
     // functionalitate labeluri categorii - afiseaza mancarurile dintr-o anumita categorie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        
         if collectionView == categoriesCollection
         {
             let mealCategory = viewModelFood.category[indexPath.row].name
-            
             self.viewModelMeal.getMeals(categories: mealCategory, completion: { [weak self] in self?.mealsCollection.reloadData()
             })
-            
             selectedIndexPath = indexPath
-            
             //categoriesCollection.reloadItems(at: [indexPath])
             categoriesCollection.reloadData()
             
@@ -181,7 +165,6 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             performSegue(withIdentifier: "fromMealToDetails", sender: id)
         }
     }
-    
 }
 
 

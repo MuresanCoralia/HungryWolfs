@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ProfileViewController: UIViewController {
 
@@ -23,9 +24,14 @@ class ProfileViewController: UIViewController {
     
     @IBAction func termsAndConditions(_ sender: Any){
         
-        if let url = NSURL(string: "https://www.wolfpack-digital.com/privacy") {
-        UIApplication.shared.open(url as URL, options:[:], completionHandler:nil)
+        if let url = URL(string: "https://www.wolfpack-digital.com/privacy"){
+            
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
         }
     }
-
+    
+    @IBAction func backFavoritesButton(_ sender: Any) {
+        tabBarController?.selectedIndex = 1
+    }
 }
