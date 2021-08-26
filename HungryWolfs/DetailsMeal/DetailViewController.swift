@@ -48,7 +48,6 @@ class DetailViewController: UIViewController
         checkButton3.setImage(UIImage(systemName: "checkmark.square"),
                           for: [.selected])
         
-    
         viewModelDetails.getDetails(id: id, completion: { [weak self] in
             self?.mealNameLabel.text = self?.viewModelDetails.details[0].name
            

@@ -36,6 +36,7 @@ class HomeScreenViewController: UIViewController {
         
         viewModelFood.getFoods(completion: { [weak self] in
             self?.categoriesCollection.reloadData()
+           // guard let category = self.viewModelMeal.categories[0].name else {return}
             self?.viewModelMeal.getMeals(categories: "Beef", completion: { [weak self] in self?.mealsCollection.reloadData()
             })
         })
