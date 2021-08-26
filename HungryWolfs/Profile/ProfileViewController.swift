@@ -22,7 +22,9 @@ class ProfileViewController: UIViewController {
         thirdView.layer.cornerRadius = 30
         
         //internet connection
-        NetworkManager.isUnreachable { _ in self.showOfflinePage() }
+        if (NetworkManager.sharedInstance.reachability).connection == .unavailable {
+            self.showOfflinePage()
+        }
     }
     
     // internet connection

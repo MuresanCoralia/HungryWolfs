@@ -33,6 +33,7 @@ class HomeScreenViewController: UIViewController {
         
         viewModelFood.getFoods(completion: { [weak self] in
             self?.categoriesCollection.reloadData()
+            //let category = self?.viewModelMeal.categories[0].name
             self?.viewModelMeal.getMeals(categories: "Beef", completion: { [weak self] in self?.mealsCollection.reloadData()
             })
         })
@@ -45,7 +46,7 @@ class HomeScreenViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-      
+        
     }
     
     override func viewWillAppear(_ animated: Bool)

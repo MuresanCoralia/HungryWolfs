@@ -327,6 +327,8 @@
                                                 <rect key="frame" x="107" y="85" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="Caj-2K-76h"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="Ryu-vV-COS"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="auc-A1-K2k"/>
                                                     <constraint firstAttribute="height" constant="200" id="wfd-vZ-Imd"/>
                                                 </constraints>
                                             </imageView>
@@ -436,11 +438,11 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1p-gz-xeK">
-                                                <rect key="frame" x="35" y="415" width="90.5" height="25"/>
+                                                <rect key="frame" x="35" y="415" width="120" height="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="90.5" id="0q9-g7-wWp"/>
                                                     <constraint firstAttribute="height" constant="25" id="OIP-u6-1ob"/>
+                                                    <constraint firstAttribute="width" constant="120" id="e4J-LN-85s"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -555,11 +557,11 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-g9-S74">
-                                                <rect key="frame" x="35" y="600" width="95.5" height="25"/>
+                                                <rect key="frame" x="35" y="600" width="120" height="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="3IW-aW-Vf1"/>
-                                                    <constraint firstAttribute="width" constant="95.5" id="iYA-iL-BNN"/>
+                                                    <constraint firstAttribute="width" constant="120" id="N0c-og-aGI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -592,7 +594,6 @@
                                             <constraint firstItem="t1p-gz-xeK" firstAttribute="leading" secondItem="bXr-JY-TPZ" secondAttribute="leading" constant="35" id="IMB-dz-f22"/>
                                             <constraint firstAttribute="right" secondItem="7Xu-a7-4e0" secondAttribute="right" constant="45" id="JY7-OU-tCl"/>
                                             <constraint firstItem="7Xu-a7-4e0" firstAttribute="top" secondItem="8jj-g9-S74" secondAttribute="bottom" constant="20" id="MTl-0o-eWh"/>
-                                            <constraint firstItem="8jj-g9-S74" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bXr-JY-TPZ" secondAttribute="leading" constant="20" symbolic="YES" id="NS5-za-ddT"/>
                                             <constraint firstAttribute="right" secondItem="hi6-nj-NhT" secondAttribute="right" constant="90" id="QfL-gq-nRA"/>
                                             <constraint firstItem="rEw-1t-AZl" firstAttribute="top" secondItem="hi6-nj-NhT" secondAttribute="bottom" constant="20" id="UL5-ax-mdi"/>
                                             <constraint firstItem="gis-Gr-cG1" firstAttribute="leading" secondItem="bXr-JY-TPZ" secondAttribute="leading" constant="107" id="YPu-zA-aV2"/>
@@ -600,7 +601,6 @@
                                             <constraint firstItem="KVn-0M-Fe9" firstAttribute="top" secondItem="bXr-JY-TPZ" secondAttribute="top" constant="30" id="asX-XM-N3N"/>
                                             <constraint firstItem="HSE-CA-hte" firstAttribute="top" secondItem="bXr-JY-TPZ" secondAttribute="top" constant="30" id="atW-UL-Vh9"/>
                                             <constraint firstItem="gis-Gr-cG1" firstAttribute="top" secondItem="bXr-JY-TPZ" secondAttribute="top" constant="85" id="cCO-u6-MAU"/>
-                                            <constraint firstItem="t1p-gz-xeK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bXr-JY-TPZ" secondAttribute="leading" constant="20" symbolic="YES" id="dad-Y1-SYm"/>
                                             <constraint firstItem="L6Q-Pn-ew6" firstAttribute="top" secondItem="Jr6-jK-A8P" secondAttribute="bottom" constant="15" id="eS8-kl-FWb"/>
                                             <constraint firstItem="HSE-CA-hte" firstAttribute="leading" secondItem="bXr-JY-TPZ" secondAttribute="leading" constant="40" id="goY-Os-lLt"/>
                                             <constraint firstAttribute="trailing" secondItem="gis-Gr-cG1" secondAttribute="trailing" constant="107" id="jVY-vT-vdt"/>

@@ -19,7 +19,9 @@ class FavouritesViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //internet connection
-        NetworkManager.isUnreachable { _ in self.showOfflinePage() }
+        if (NetworkManager.sharedInstance.reachability).connection == .unavailable {
+            self.showOfflinePage()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool){
