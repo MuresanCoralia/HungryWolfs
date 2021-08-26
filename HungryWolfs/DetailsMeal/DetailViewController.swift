@@ -55,51 +55,55 @@ class DetailViewController: UIViewController
         viewModelDetails.getDetails(id: id, completion: { [weak self] in
             
             // pentru favourites
-            self?.favName = self?.viewModelDetails.details[0].name ?? ""
-            self?.favImg = self?.viewModelDetails.details[0].thumb ?? ""
-            self?.favId = self?.viewModelDetails.details[0].id ?? ""
+            guard let self = self else { return }
+            self.favName = self.viewModelDetails.details[0].name
+            self.favImg = self.viewModelDetails.details[0].thumb
+            self.favId = self.viewModelDetails.details[0].id
 
             // pentru details
-            self?.mealNameLabel.text = self?.viewModelDetails.details[0].name
+            self.mealNameLabel.text = self.viewModelDetails.details[0].name
                         
-            guard let imageURL = URL(string: (self?.viewModelDetails.details[0].thumb)!) else { return }
-            self?.mealImage.kf.setImage(with: imageURL)
-            self?.mealImage.layer.masksToBounds = true
-            self?.mealImage.layer.cornerRadius = (self?.mealImage.bounds.width)! / 2
+            guard let imageURL = URL(string: (self.viewModelDetails.details[0].thumb)) else { return }
+            self.mealImage.kf.setImage(with: imageURL)
+            self.mealImage.layer.masksToBounds = true
+            self.mealImage.layer.cornerRadius = (self.mealImage.bounds.width) / 2
             
-            self?.measure1Label.text = self?.viewModelDetails.details[0].measure1
-            self?.measure2Label.text = self?.viewModelDetails.details[0].measure2
-            self?.measure3Label.text = self?.viewModelDetails.details[0].measure3
-            self?.ingredient1Label.text = self?.viewModelDetails.details[0].ingredient1
-            self?.ingredient2Label.text = self?.viewModelDetails.details[0].ingredient2
-            self?.ingredient3Label.text = self?.viewModelDetails.details[0].ingredient3
-            self?.mealDescription.text = self?.viewModelDetails.details[0].instructions
+            self.measure1Label.text = self.viewModelDetails.details[0].measure1
+            self.measure2Label.text = self.viewModelDetails.details[0].measure2
+            self.measure3Label.text = self.viewModelDetails.details[0].measure3
+            self.ingredient1Label.text = self.viewModelDetails.details[0].ingredient1
+            self.ingredient2Label.text = self.viewModelDetails.details[0].ingredient2
+            self.ingredient3Label.text = self.viewModelDetails.details[0].ingredient3
+            self.mealDescription.text = self.viewModelDetails.details[0].instructions
             // tagurile
-            let array = self?.viewModelDetails.details[0].tags
+            let array = self.viewModelDetails.details[0].tags
             let tagList = array?.components(separatedBy: ",")
             if tagList?.count == 1
             {
-                self?.mealTag1Label.text = tagList?[0]
-                self?.configureView1()
+                self.mealTag1Label.text = tagList?[0]
+                self.configureView1()
             }
             else if tagList?.count == 2
             {
-                self?.mealTag1Label.text = tagList?[0]
-                self?.configureView1()
-                self?.mealTag2Label.text = tagList?[1]
-                self?.configureView2()
+                self.mealTag1Label.text = tagList?[0]
+                self.configureView1()
+                self.mealTag2Label.text = tagList?[1]
+                self.configureView2()
             }
             else if tagList?.count == 3
             {
-                self?.mealTag1Label.text = tagList?[0]
-                self?.configureView1()
-                self?.mealTag2Label.text = tagList?[1]
-                self?.configureView2()
-                self?.mealTag3Label.text = tagList?[2]
-                self?.configureView3()
+                self.mealTag1Label.text = tagList?[0]
+                self.configureView1()
+                self.mealTag2Label.text = tagList?[1]
+                self.configureView2()
+                self.mealTag3Label.text = tagList?[2]
+                self.configureView3()
             }
         })
 
+        if (NetworkManager.sharedInstance.reachability).connection == .unavailable {
+            self.showOfflinePage()
+        }
     }
     
     func configureView1()
@@ -126,6 +130,15 @@ class DetailViewController: UIViewController
         self.tagView3.layer.borderColor = UIColor.red.cgColor
     }
     
+    // internet connection
+    private func showOfflinePage() -> Void {
+        DispatchQueue.main.async {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let internetConnectionViewController = mainStoryboard.instantiateViewController(identifier: "InternetConnectionScreen")
+            internetConnectionViewController.modalPresentationStyle = .fullScreen
+            self.present(internetConnectionViewController, animated: true)
+        }
+    }
     
     @IBAction func backButtnTapped(_ sender: Any)
     {

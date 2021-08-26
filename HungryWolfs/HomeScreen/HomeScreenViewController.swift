@@ -12,9 +12,6 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var categoriesCollection: UICollectionView!
     @IBOutlet weak var mealsCollection: UICollectionView!
-    
-    
-    
     @IBOutlet weak var searchField: UITextField!
     
     private let viewModelFood: FoodViewModel = FoodViewModel()
@@ -48,9 +45,7 @@ class HomeScreenViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
-        // linia de la tab bar
-        UITabBar.appearance().clipsToBounds = true
+      
     }
     
     override func viewWillAppear(_ animated: Bool)

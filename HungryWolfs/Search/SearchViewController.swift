@@ -9,16 +9,17 @@ import UIKit
 
 class SearchViewController: UIViewController
 {
-
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var foundLabel: UILabel!
+    @IBOutlet weak var itemNotFoundStack: UIStackView!
+    @IBOutlet weak var mealCollection: UICollectionView!
     @IBOutlet weak var mealSearchCollection: UICollectionView!
-    
+   
     var text = ""
     
     private let viewModelSearch: SearchViewModel = SearchViewModel()
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -39,7 +40,20 @@ class SearchViewController: UIViewController
         
         //searchTextField.becomeFirstResponder()
         searchTextField.resignFirstResponder()
+        searchTextField.delegate = self // set delegate
+        
+        //internet connection
+        NetworkManager.isUnreachable { _ in self.showOfflinePage() }
+    }
     
+    // internet connection
+    private func showOfflinePage() -> Void {
+        DispatchQueue.main.async {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let internetConnectionViewController = mainStoryboard.instantiateViewController(identifier: "InternetConnectionScreen")
+            internetConnectionViewController.modalPresentationStyle = .fullScreen
+            self.present(internetConnectionViewController, animated: true)
+        }
     }
     
     // labelul cu nr de results
@@ -52,15 +66,22 @@ class SearchViewController: UIViewController
     // labelul cu nr de results
     func searchData(name: String)
     {
+        self.itemNotFoundStack.isHidden = false
+        self.mealCollection.isHidden = true
+        self.foundLabel.isHidden = true
         viewModelSearch.getSearch(name: name, completion: { [weak self] in
             self?.mealSearchCollection.reloadData()
             let nrOfResults = String(self?.viewModelSearch.meals.count ?? 0)
             if nrOfResults == "1"
             {
+                self?.foundLabel.isHidden = false
+                self?.mealCollection.isHidden = false
                 self?.foundLabel.text = "Found \(nrOfResults) result"
             }
             else
             {
+                self?.foundLabel.isHidden = false
+                self?.mealCollection.isHidden = false
                 self?.foundLabel.text = "Found \(nrOfResults) results"
             }
         })
@@ -77,11 +98,10 @@ class SearchViewController: UIViewController
         }
     }
     
-    
-     @IBAction func backButtnTapped(_ sender: Any)
-     {
+    @IBAction func backButtnTapped(_ sender: Any)
+    {
         self.navigationController?.popViewController(animated: true)
-     }
+    }
     
 }
 
@@ -141,6 +161,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+}
+
+// for keyboard issues
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.resignFirstResponder() // dismiss keyboard
+        return true
+    }
 }
 
 
