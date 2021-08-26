@@ -50,7 +50,6 @@ class DetailViewController: UIViewController
                           for: [.selected])
         checkButton3.setImage(UIImage(systemName: "checkmark.square"),
                           for: [.selected])
-        
     
         viewModelDetails.getDetails(id: id, completion: { [weak self] in
             
