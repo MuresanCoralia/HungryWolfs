@@ -328,6 +328,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="Caj-2K-76h"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="Ryu-vV-COS"/>
+                                                    <constraint firstAttribute="width" secondItem="gis-Gr-cG1" secondAttribute="height" multiplier="1:1" id="YZo-1Y-u0y"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="auc-A1-K2k"/>
                                                     <constraint firstAttribute="height" constant="200" id="wfd-vZ-Imd"/>
                                                 </constraints>
@@ -373,6 +374,9 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDO-nG-N2t">
                                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="W5l-Lp-b8p"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -393,6 +397,9 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKp-3J-a4O">
                                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                                                 <color key="backgroundColor" red="0.96058104210293171" green="0.96058104210293171" blue="0.96058104210293171" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="SFR-h2-rs2"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -413,6 +420,9 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdy-JW-pfn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
                                                                 <color key="backgroundColor" red="0.95656941179999999" green="0.96098535340000002" blue="0.97423317809999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="Geb-iC-IKF"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -422,6 +432,7 @@
                                                         <constraints>
                                                             <constraint firstItem="xdy-JW-pfn" firstAttribute="leading" secondItem="dDJ-yo-DJ0" secondAttribute="leading" id="38u-Hm-hJ0"/>
                                                             <constraint firstAttribute="bottom" secondItem="xdy-JW-pfn" secondAttribute="bottom" id="5ca-kj-kPI"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="KZJ-Ud-Z0U"/>
                                                             <constraint firstItem="xdy-JW-pfn" firstAttribute="top" secondItem="dDJ-yo-DJ0" secondAttribute="top" id="QaX-sn-ffo"/>
                                                             <constraint firstAttribute="trailing" secondItem="xdy-JW-pfn" secondAttribute="trailing" id="W8O-aE-21v"/>
                                                         </constraints>
@@ -430,6 +441,7 @@
                                                 <constraints>
                                                     <constraint firstItem="dDJ-yo-DJ0" firstAttribute="top" secondItem="rEw-1t-AZl" secondAttribute="top" id="0DF-YO-0We"/>
                                                     <constraint firstAttribute="bottom" secondItem="dDJ-yo-DJ0" secondAttribute="bottom" id="5c1-8s-OTy"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="289" id="FRD-ZK-CvI"/>
                                                     <constraint firstAttribute="bottom" secondItem="IhY-0v-xdZ" secondAttribute="bottom" id="kGW-Lq-0PV"/>
                                                     <constraint firstAttribute="bottom" secondItem="5nQ-bU-m7J" secondAttribute="bottom" id="qtF-kw-na8"/>
                                                     <constraint firstItem="IhY-0v-xdZ" firstAttribute="top" secondItem="rEw-1t-AZl" secondAttribute="top" id="rjv-1r-Ne6"/>
@@ -442,7 +454,7 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="OIP-u6-1ob"/>
-                                                    <constraint firstAttribute="width" constant="120" id="e4J-LN-85s"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="e4J-LN-85s"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -561,7 +573,7 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="3IW-aW-Vf1"/>
-                                                    <constraint firstAttribute="width" constant="120" id="N0c-og-aGI"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="N0c-og-aGI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -893,12 +905,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="NrX-eK-f8B">
                                 <rect key="frame" x="0.0" y="141" width="414" height="755"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzC-ID-wmX">
                                         <rect key="frame" x="70" y="23" width="274" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="9MN-E6-oaU"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="VMR-mu-jhL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                         <nil key="textColor"/>
@@ -1028,6 +1041,7 @@
                                     <constraint firstItem="pIx-qa-jwr" firstAttribute="top" secondItem="MzC-ID-wmX" secondAttribute="bottom" constant="150" id="Pc9-7e-YJ6"/>
                                     <constraint firstItem="oFX-Cm-WFc" firstAttribute="leading" secondItem="NrX-eK-f8B" secondAttribute="leadingMargin" constant="22" id="RcN-G7-Hkg"/>
                                     <constraint firstItem="pIx-qa-jwr" firstAttribute="leading" secondItem="NrX-eK-f8B" secondAttribute="leading" constant="100" id="c0G-88-pUi"/>
+                                    <constraint firstItem="oFX-Cm-WFc" firstAttribute="centerX" secondItem="NrX-eK-f8B" secondAttribute="centerX" id="c3b-Iw-Wsg"/>
                                     <constraint firstAttribute="trailing" secondItem="pIx-qa-jwr" secondAttribute="trailing" constant="100" id="lcx-rJ-9m1"/>
                                     <constraint firstItem="pIx-qa-jwr" firstAttribute="top" secondItem="MzC-ID-wmX" secondAttribute="bottom" constant="150" id="mup-7m-ybR"/>
                                     <constraint firstItem="oFX-Cm-WFc" firstAttribute="top" secondItem="MzC-ID-wmX" secondAttribute="bottom" constant="19" id="zFD-S3-V8X"/>
@@ -1180,7 +1194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOH-KL-rEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2359" y="938"/>
+            <point key="canvasLocation" x="-2239" y="938"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ngk-bf-B0X">
@@ -1232,7 +1246,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cMj-cz-ww9"/>
+        <segue reference="Xec-5K-l7m"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="17127878731553169568-20" width="20" height="20"/>
