@@ -33,8 +33,8 @@ class HomeScreenViewController: UIViewController {
         
         viewModelFood.getFoods(completion: { [weak self] in
             self?.categoriesCollection.reloadData()
-            //let category = self?.viewModelMeal.categories[0].name
-            self?.viewModelMeal.getMeals(categories: "Beef", completion: { [weak self] in self?.mealsCollection.reloadData()
+            let category = self?.viewModelFood.category[0].name ?? "Beef"
+            self?.viewModelMeal.getMeals(categories: category, completion: { [weak self] in self?.mealsCollection.reloadData()
             })
         })
         
