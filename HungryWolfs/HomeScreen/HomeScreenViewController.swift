@@ -12,9 +12,6 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var categoriesCollection: UICollectionView!
     @IBOutlet weak var mealsCollection: UICollectionView!
-    
-    
-    
     @IBOutlet weak var searchField: UITextField!
     
     private let viewModelFood: FoodViewModel = FoodViewModel()
@@ -36,7 +33,8 @@ class HomeScreenViewController: UIViewController {
         
         viewModelFood.getFoods(completion: { [weak self] in
             self?.categoriesCollection.reloadData()
-            self?.viewModelMeal.getMeals(categories: "Beef", completion: { [weak self] in self?.mealsCollection.reloadData()
+            let category = self?.viewModelFood.category[0].name ?? "Beef"
+            self?.viewModelMeal.getMeals(categories: category, completion: { [weak self] in self?.mealsCollection.reloadData()
             })
         })
         
@@ -49,8 +47,6 @@ class HomeScreenViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        // linia de la tab bar
-        UITabBar.appearance().clipsToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool)

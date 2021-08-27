@@ -30,6 +30,9 @@
 		B493986026C12D18001015AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B493985E26C12D18001015AB /* LaunchScreen.storyboard */; };
 		B493986B26C12D19001015AB /* HungryWolfsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493986A26C12D19001015AB /* HungryWolfsTests.swift */; };
 		B493987626C12D19001015AB /* HungryWolfsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493987526C12D19001015AB /* HungryWolfsUITests.swift */; };
+		B49582D726D4DA3900EB158C /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49582D626D4DA3900EB158C /* NetworkManger.swift */; };
+		B49654FA26D3C78000CD9C1B /* InternetConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49654F926D3C78000CD9C1B /* InternetConnectionViewController.swift */; };
+		B49654FF26D3D4D400CD9C1B /* RxReachability in Frameworks */ = {isa = PBXBuildFile; productRef = B49654FE26D3D4D400CD9C1B /* RxReachability */; };
 		B4E7FC1B26CA5C2D00D361C3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E7FC1A26CA5C2D00D361C3 /* SearchViewController.swift */; };
 		B4E7FC1F26CA943C00D361C3 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E7FC1E26CA943C00D361C3 /* SearchViewModel.swift */; };
 		B4E7FC2126CA980800D361C3 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E7FC2026CA980800D361C3 /* SearchCollectionViewCell.swift */; };
@@ -80,6 +83,8 @@
 		B493987126C12D19001015AB /* HungryWolfsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HungryWolfsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B493987526C12D19001015AB /* HungryWolfsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungryWolfsUITests.swift; sourceTree = "<group>"; };
 		B493987726C12D19001015AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B49582D626D4DA3900EB158C /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
+		B49654F926D3C78000CD9C1B /* InternetConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionViewController.swift; sourceTree = "<group>"; };
 		B4E7FC1A26CA5C2D00D361C3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B4E7FC1E26CA943C00D361C3 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		B4E7FC2026CA980800D361C3 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B492C8E926C5193600CB8989 /* Kingfisher in Frameworks */,
+				B49654FF26D3D4D400CD9C1B /* RxReachability in Frameworks */,
 				B48C32EF26C3B9B400D0F952 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +118,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71B0BC6632153F0745861642 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B479CFCD26CBD51B001E5AED /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +196,7 @@
 				B493986926C12D19001015AB /* HungryWolfsTests */,
 				B493987426C12D19001015AB /* HungryWolfsUITests */,
 				B493985126C12D16001015AB /* Products */,
+				71B0BC6632153F0745861642 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +223,7 @@
 				B479CFCE26CBD53A001E5AED /* DetailsMeal */,
 				B47A193026CE6006007DFDB8 /* Favourites */,
 				B47A193F26CE8600007DFDB8 /* Profile */,
+				B49582D526D4C8EE00EB158C /* Internet Connection */,
 				B493985926C12D16001015AB /* Main.storyboard */,
 				B493985E26C12D18001015AB /* LaunchScreen.storyboard */,
 				B493985C26C12D18001015AB /* Assets.xcassets */,
@@ -233,6 +248,15 @@
 				B493987726C12D19001015AB /* Info.plist */,
 			);
 			path = HungryWolfsUITests;
+			sourceTree = "<group>";
+		};
+		B49582D526D4C8EE00EB158C /* Internet Connection */ = {
+			isa = PBXGroup;
+			children = (
+				B49654F926D3C78000CD9C1B /* InternetConnectionViewController.swift */,
+				B49582D626D4DA3900EB158C /* NetworkManger.swift */,
+			);
+			path = "Internet Connection";
 			sourceTree = "<group>";
 		};
 		B4E7FC1926CA5BF100D361C3 /* Search */ = {
@@ -263,6 +287,7 @@
 			packageProductDependencies = (
 				B48C32EE26C3B9B400D0F952 /* Alamofire */,
 				B492C8E826C5193600CB8989 /* Kingfisher */,
+				B49654FE26D3D4D400CD9C1B /* RxReachability */,
 			);
 			productName = HungryWolfs;
 			productReference = B493985026C12D16001015AB /* HungryWolfs.app */;
@@ -338,6 +363,7 @@
 			packageReferences = (
 				B48C32ED26C3B9B400D0F952 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B492C8E726C5193600CB8989 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B49654FD26D3D4D400CD9C1B /* XCRemoteSwiftPackageReference "RxReachability" */,
 			);
 			productRefGroup = B493985126C12D16001015AB /* Products */;
 			projectDirPath = "";
@@ -391,10 +417,12 @@
 				B492C8E626C5125600CB8989 /* MealsCollectionViewCell.swift in Sources */,
 				B4E7FC1F26CA943C00D361C3 /* SearchViewModel.swift in Sources */,
 				B48C32F126C3BA0D00D0F952 /* Repository.swift in Sources */,
+				B49582D726D4DA3900EB158C /* NetworkManger.swift in Sources */,
 				B47A194126CE861D007DFDB8 /* ProfileViewController.swift in Sources */,
 				B4E7FC1B26CA5C2D00D361C3 /* SearchViewController.swift in Sources */,
 				B493985426C12D16001015AB /* AppDelegate.swift in Sources */,
 				B490121D26C421F4000D6600 /* CategoryCollectionViewCell.swift in Sources */,
+				B49654FA26D3C78000CD9C1B /* InternetConnectionViewController.swift in Sources */,
 				B493985626C12D16001015AB /* SceneDelegate.swift in Sources */,
 				B48F04A226C2DD0700C0F41C /* HomeScreenViewController.swift in Sources */,
 				B47BDA2526CD00C8000A3302 /* Details.swift in Sources */,
@@ -506,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -561,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -577,7 +605,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H895XKK7WN;
 				INFOPLIST_FILE = HungryWolfs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +625,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H895XKK7WN;
 				INFOPLIST_FILE = HungryWolfs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -745,6 +777,14 @@
 				minimumVersion = 6.3.1;
 			};
 		};
+		B49654FD26D3D4D400CD9C1B /* XCRemoteSwiftPackageReference "RxReachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxReachability";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -757,6 +797,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B492C8E726C5193600CB8989 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		B49654FE26D3D4D400CD9C1B /* RxReachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B49654FD26D3D4D400CD9C1B /* XCRemoteSwiftPackageReference "RxReachability" */;
+			productName = RxReachability;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

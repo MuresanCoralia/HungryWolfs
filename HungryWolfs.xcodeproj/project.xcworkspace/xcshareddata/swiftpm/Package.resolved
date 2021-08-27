@@ -18,6 +18,33 @@
           "revision": "d06df9adf50ed8cde5786d935836a5f445f780ba",
           "version": "6.3.1"
         }
+      },
+      {
+        "package": "Reachability",
+        "repositoryURL": "https://github.com/ashleymills/Reachability.swift",
+        "state": {
+          "branch": null,
+          "revision": "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "RxReachability",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxReachability",
+        "state": {
+          "branch": null,
+          "revision": "8087d7154796406c8981961858b31324743311cf",
+          "version": "1.2.1"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
+        "state": {
+          "branch": null,
+          "revision": "7c17a6ccca06b5c107cfa4284e634562ddaf5951",
+          "version": "6.2.0"
+        }
       }
     ]
   },

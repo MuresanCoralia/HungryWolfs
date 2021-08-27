@@ -17,10 +17,16 @@ class FavouritesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        //internet connection
+        if (NetworkManager.sharedInstance.reachability).connection == .unavailable {
+            self.showOfflinePage()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
+        tableView.rowHeight = UITableView.automaticDimension
         navigationController?.setNavigationBarHidden(true, animated: animated)
         tableView.reloadData()
     }
@@ -34,7 +40,15 @@ class FavouritesViewController: UIViewController {
         }
     }
     
-
+    // internet connection
+    private func showOfflinePage() -> Void {
+        DispatchQueue.main.async {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let internetConnectionViewController = mainStoryboard.instantiateViewController(identifier: "InternetConnectionScreen")
+            internetConnectionViewController.modalPresentationStyle = .fullScreen
+            self.present(internetConnectionViewController, animated: true)
+        }
+    }
 }
 
 extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource

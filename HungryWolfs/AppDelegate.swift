@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // linia de la tab bar
+        UITabBar.appearance().clipsToBounds = true
         // Override point for customization after application launch.
         return true
     }

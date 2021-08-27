@@ -11,10 +11,12 @@ import Alamofire
 class Repository
 {
     
-    let myFoodURL = "https://www.themealdb.com/api/json/v1/1/categories.php"
+    let URL = "https://www.themealdb.com/api/json/v1/1/"
     
     func getCategories(completion: @escaping ([Food]?) -> Void)
     {
+        let myFoodURL = URL + "categories.php"
+        
         AF.request(myFoodURL).responseJSON
         { response in
             switch response.result
@@ -33,7 +35,7 @@ class Repository
     
     func getMeals(categories: String, completion: @escaping ([Meal]?) -> Void)
     {
-        let myMealURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + categories
+        let myMealURL = URL + "filter.php?c=" + categories
         
         AF.request(myMealURL).responseJSON
         { response in
@@ -52,7 +54,7 @@ class Repository
     
     func getSearch(name: String, completion: @escaping ([Meal]?) -> Void)
     {
-        let myMealURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + name
+        let myMealURL = URL + "search.php?s=" + name
         
         AF.request(myMealURL).responseJSON
         { response in
@@ -72,7 +74,7 @@ class Repository
     // label found x items
     func getNumberMeals(name: String, completion: @escaping ([Meal]?) -> Void)
     {
-        let myMealURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + name
+        let myMealURL = URL + "filter.php?c=" + name
         
         AF.request(myMealURL).responseJSON
         { response in
@@ -92,7 +94,7 @@ class Repository
     
     func getDetails(id: String, completion: @escaping ([Detail]?) -> Void)
     {
-        let myMealURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id
+        let myMealURL = URL + "lookup.php?i=" + id
         
         AF.request(myMealURL).responseJSON
         { response in
